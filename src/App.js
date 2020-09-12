@@ -3,6 +3,7 @@ import './App.css';
 import Person from './Person/Person';
 
 class App extends Component {
+
   state={
     persons: [
       {name:'siva',age:24},
@@ -10,11 +11,22 @@ class App extends Component {
       {name:'salman',age:20}
     ],
     otherstate:'otherValue'
-  };
+  }
+
+  switchNameHandler=()=>{
+    this.setState({
+      persons: [
+        {name:'siva balusu',age:24},
+        {name:'naga Raju',age:24},
+        {name:'salman',age:21}
+      ]
+    })
+  }
  render() {
    return (
     <div className="App">
       <h1>Welcome to React</h1>
+      <button onClick={this.switchNameHandler}>switchName</button>
       <Person name={this.state.persons[0].name} age={this.state.persons[0].age}/>
       <Person name={this.state.persons[1].name} age={this.state.persons[1].age}>How are you doing</Person>
       <Person name={this.state.persons[2].name} age={this.state.persons[2].age}/>
