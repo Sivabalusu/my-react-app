@@ -22,16 +22,40 @@ class App extends Component {
       ]
     })
   }
+
+  nameChangedHandler=(event)=>{
+    this.setState({
+      persons: [
+        {name:"Siva",age:24},
+        {name:event.target.value,age:24},
+        {name:'salman',age:21}
+      ]
+    })
+  }
+
  render() {
+   const style={
+     backgroundColor:"white",
+     border:"1px solid blue",
+     padding:"10px auto",
+     color:"black",
+     font:"inherit",
+     width:"100px"
+   }
    return (
     <div className="App">
       <h1>Welcome to React</h1>
-      <button onClick={this.switchNameHandler.bind(this,'Siva Balusu')}>switchName</button>
+      <button 
+        style={style}
+        onClick={this.switchNameHandler.bind(this,'Siva Balusu')}>
+        switchName</button>
       <Person name={this.state.persons[0].name} 
          age={this.state.persons[0].age}/>
       <Person name={this.state.persons[1].name} 
           age={this.state.persons[1].age}
-          click={this.switchNameHandler.bind(this,'Siva!')}>How are you doing</Person>
+          click={this.switchNameHandler.bind(this,'Siva!')}
+          change={this.nameChangedHandler}>How are you doing</Person>
+          
       <Person name={this.state.persons[2].name} 
          age={this.state.persons[2].age}/>
     </div>
