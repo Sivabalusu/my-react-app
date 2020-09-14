@@ -10,7 +10,8 @@ class App extends Component {
       {name:'raju',age:22},
       {name:'salman',age:20}
     ],
-    otherstate:'otherValue'
+    otherstate:'otherValue',
+    togglePersons:false
   }
 
   switchNameHandler=(newName)=>{
@@ -33,6 +34,11 @@ class App extends Component {
     })
   }
 
+  togglePersonsHandler=()=>{
+    const person=this.state.togglePersons;
+    this.setState({togglePersons:!person})
+  }
+
  render() {
    const style={
      backgroundColor:"white",
@@ -47,17 +53,24 @@ class App extends Component {
       <h1>Welcome to React</h1>
       <button 
         style={style}
-        onClick={this.switchNameHandler.bind(this,'Siva Balusu')}>
-        switchName</button>
-      <Person name={this.state.persons[0].name} 
-         age={this.state.persons[0].age}/>
-      <Person name={this.state.persons[1].name} 
-          age={this.state.persons[1].age}
-          click={this.switchNameHandler.bind(this,'Siva!')}
-          change={this.nameChangedHandler}>How are you doing</Person>
-          
-      <Person name={this.state.persons[2].name} 
-         age={this.state.persons[2].age}/>
+        onClick={this.togglePersonsHandler}>
+        Toggle Persons
+      </button>
+
+      { this.state.togglePersons===true ?
+        <div>
+          <Person name={this.state.persons[0].name} 
+             age={this.state.persons[0].age}/>
+          <Person name={this.state.persons[1].name} 
+              age={this.state.persons[1].age}
+              click={this.switchNameHandler.bind(this,'Siva!')}
+              change={this.nameChangedHandler}>How are you doing</Person>
+          <Person name={this.state.persons[2].name} 
+               age={this.state.persons[2].age}/>
+        </div>
+        :null 
+      }
+ 
     </div>
   );
   //Internal working of above code
