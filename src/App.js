@@ -48,6 +48,23 @@ class App extends Component {
      font:"inherit",
      width:"100px"
    }
+
+   let persons=null;
+   if(this.state.togglePersons){
+     persons= (
+     <div>
+      <Person name={this.state.persons[0].name} 
+          age={this.state.persons[0].age}/>
+      <Person name={this.state.persons[1].name} 
+         age={this.state.persons[1].age}
+         click={this.switchNameHandler.bind(this,'Siva!')}
+         change={this.nameChangedHandler}>How are you doing</Person>
+      <Person name={this.state.persons[2].name} 
+          age={this.state.persons[2].age}/>
+    </div> 
+   );
+   }
+
    return (
     <div className="App">
       <h1>Welcome to React</h1>
@@ -56,21 +73,7 @@ class App extends Component {
         onClick={this.togglePersonsHandler}>
         Toggle Persons
       </button>
-
-      { this.state.togglePersons===true ?
-        <div>
-          <Person name={this.state.persons[0].name} 
-             age={this.state.persons[0].age}/>
-          <Person name={this.state.persons[1].name} 
-              age={this.state.persons[1].age}
-              click={this.switchNameHandler.bind(this,'Siva!')}
-              change={this.nameChangedHandler}>How are you doing</Person>
-          <Person name={this.state.persons[2].name} 
-               age={this.state.persons[2].age}/>
-        </div>
-        :null 
-      }
- 
+      {persons}
     </div>
   );
   //Internal working of above code
