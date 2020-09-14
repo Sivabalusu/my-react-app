@@ -52,17 +52,13 @@ class App extends Component {
    let persons=null;
    if(this.state.togglePersons){
      persons= (
-     <div>
-      <Person name={this.state.persons[0].name} 
-          age={this.state.persons[0].age}/>
-      <Person name={this.state.persons[1].name} 
-         age={this.state.persons[1].age}
-         click={this.switchNameHandler.bind(this,'Siva!')}
-         change={this.nameChangedHandler}>How are you doing</Person>
-      <Person name={this.state.persons[2].name} 
-          age={this.state.persons[2].age}/>
-    </div> 
-   );
+     <div>{
+       this.state.persons.map(persons=()=>{
+          return <Person name={persons.name}
+                  age={persons.age}/>
+       })
+      }
+      </div>);
    }
 
    return (
